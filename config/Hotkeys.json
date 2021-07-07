@@ -1,12 +1,1 @@
-{
-	"Movie Mode": "M",
-	"Unlock Input Display": "U",
-	"Input Display Border": "B",
-	"Reset Textbox Counters": "R",
-	"Extended Background Chroma": "C",
-	"Use Custom Button Color": "V",
-	"Disable Textbox Features": "T",
-	"Disable Input Viewer": "I",
-	"Reset Input Viewer Position": "K",
-	"Load Hotkey Edit Tools": "E"
-}
+{"Extended Background Chroma":"C","Disable Input Viewer":"I","Use Custom Button Color":"V","Load Hotkey Edit Tools":"E","Unlock Input Display":"U","Disable Textbox Features":"T","Reset Textbox Counters":"R","Input Display Border":"B","Movie Mode":"M","Reset Input Viewer Position":"K"}

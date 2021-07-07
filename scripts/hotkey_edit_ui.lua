@@ -22,6 +22,17 @@ function next_hotkey(forward)
 	end
 end
 
+function check_for_save_clicked()
+	if mouse["Left"] then
+		local width = config["Padding Width"] + 240
+		local mouse_x = mouse["X"] + config["Padding Width"]
+		local mouse_y = mouse["Y"]
+		if mouse_x >= width + 20 and mouse_x <= width + 80 and mouse_y >= 110 and mouse_y <= 130 then
+			save()
+		end
+	end
+end
+
 function save()
 	save_hotkeys()
 	hotkey_editing = false

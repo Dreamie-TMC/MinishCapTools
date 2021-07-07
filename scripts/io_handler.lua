@@ -82,6 +82,8 @@ function hotkey_ui_input_loop()
 			next_hotkey(false)
 			key_switch = true
 		end
+	else
+		key_switch = false
 	end
 end
 
