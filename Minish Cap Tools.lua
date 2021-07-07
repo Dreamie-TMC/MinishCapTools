@@ -34,20 +34,23 @@ frame_counter = 0
 frames_lost = 0
 
 -- Setup window
-client.SetGameExtraPadding(100, 0, 0, 0)
+client.SetGameExtraPadding(config["Padding Width"], 0, 0, 0)
+
+-- Generic Actions
+function generic_actions()	
+	if config["Background Chroma"] then
+		gui.drawBox(0, 0, config["Padding Width"] - 1, 160, 0xFF008CFF, 0xFF008CFF)
+	end
+end
 
 -- Controls Actions
 function controls_actions()	
 	if unlock then
 		if mouse["Left"] then
-			local x = mouse["X"]
-			local y = mouse["Y"]
+			local x = mouse["X"] + (config["Padding Width"] - 25)
+			local y = mouse["Y"] - 12
 			update_configuration("Input Viewer", {x = x, y = y})
 		end
-	end
-	
-	if config["Background Chroma"] then
-		gui.drawBox(0, 0, 99, 160, 0xFF008CFF, 0xFF008CFF)
 	end
 
 	if config["Input Display Border"] then
@@ -132,6 +135,8 @@ end
 while true do
 	per_frame_setup()
 	input_loop()
+	
+	generic_actions()
 	
 	if config["Show Input Viewer"] then
 		controls_actions()
