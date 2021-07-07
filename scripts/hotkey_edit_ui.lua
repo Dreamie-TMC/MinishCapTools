@@ -27,8 +27,10 @@ function check_for_save_clicked()
 		local width = config["Padding Width"] + 240
 		local mouse_x = mouse["X"] + config["Padding Width"]
 		local mouse_y = mouse["Y"]
-		if mouse_x >= width + 20 and mouse_x <= width + 80 and mouse_y >= 110 and mouse_y <= 130 then
+		if mouse_x >= width + 20 and mouse_x <= width + 80 and mouse_y >= 100 and mouse_y <= 120 then
 			save()
+		elseif mouse_x >= width + 20 and mouse_x <= width + 80 and mouse_y >= 125 and mouse_y <= 145 then
+			cancel()
 		end
 	end
 end
@@ -37,6 +39,12 @@ function save()
 	save_hotkeys()
 	hotkey_editing = false
 	client.SetGameExtraPadding(config["Padding Width"], 0, 0, 0)
+end
+
+function cancel()
+	hotkey_editing = false
+	client.SetGameExtraPadding(config["Padding Width"], 0, 0, 0)
+	load_hotkeys()
 end
 
 function key_line_wrapping()
@@ -64,8 +72,10 @@ end
 function draw_hotkey_ui()
 	local width = config["Padding Width"] + 240
 	local key_output = key_line_wrapping()
-	gui.drawRectangle(width + 20, 110, 60, 20, "green", "lightgreen")
-	gui.drawText(width + 22, 115, "Save Hotkeys", "black", nil, 8, "MiniSet2")
+	gui.drawRectangle(width + 20, 100, 60, 20, "green", "lightgreen")
+	gui.drawRectangle(width + 20, 125, 60, 20, "red", "red")
+	gui.drawText(width + 22, 105, "Save Hotkeys", "black", nil, 8, "MiniSet2")
+	gui.drawText(width + 35, 130, "Cancel", "black", nil, 8, "MiniSet2")
 	gui.drawText(width + 5, 30, key_output["word"], "white", nil, 8, "MiniSet2")
 	if waiting_for_hotkey then
 		gui.drawText(width + 35, 30 + (12 * key_output["count"]) + 15, "Waiting...", "white", nil, 8, "MiniSet2")

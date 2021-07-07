@@ -52,9 +52,10 @@ A series of tools for Minish Cap Speedruns and Practice
 - Pressing enter with the menu open will prompt for a key press. The next key press will be registered as the assigned hotkey for that action.
 - Pressing the right arrow will go to the next hotkey in the list, pressing the left arrow will go back one hotkey.
 - Clicking save will save the hotkeys and close the editing UI. This will also re-enable other hotkeys.
+- Clicking cancel will discard any changes made to the hotkeys and close the editing UI. It will reload the existing hotkeys and use those instead. This will also re-enable other hotkeys.
 
 #### Shared
-- O puts the script into "Speedrun Mode" which locks you out of certain hotkeys. Currently is filters out opening the hotkey edit menu.
+- O puts the script into "Speedrun Mode" which locks you out of certain hotkeys. Currently it filters out opening the hotkey edit menu.
 - M loads movie mode allowing inputs to be displayed for recordings and shows how well the movie mashes textboxes
 - C changes the background of the extension from black to blue or vice-versa
 
@@ -63,7 +64,7 @@ A series of tools for Minish Cap Speedruns and Practice
 #### Disabling certain features from running through keybinds to improve performance (Done)
 #### Editing Keybinds directly in the UI (Done)
 #### Total Lost Frames doing actions (pulling, shrinking) (Not Started)
-#### Frames between rolls counter, also counting the number of frame perfect rolls (Not Started)
+#### Frames between rolls counter, also counting the number of frame perfect rolls (Starting)
 #### Useful Practice Tools such as Boss HP (Not Started)
 #### Integration of Straylite's Pseudo Practice Rom LUA (Maybe?)
 

@@ -11,7 +11,10 @@ function load_required_file_data()
 	config_file:close()
 	config = json.decode(config_data)
 	
-	-- Hotkey Load
+	load_hotkeys()
+end
+
+function load_hotkeys()
 	local hotkey_file = io.open("config/hotkeys.json", "r")
 	local data = hotkey_file:read("*a")
 	hotkey_file:close()
