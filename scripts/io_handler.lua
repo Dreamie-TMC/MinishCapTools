@@ -49,6 +49,12 @@ function input_loop()
 			key_switch = true
 		end
 		return
+	elseif keys[hotkeys["Reset Input Viewer Position"]] then
+		if not key_switch then
+			update_configuration("Input Viewer", {x = 1, y = 135})
+			key_switch = true
+		end
+		return
 	elseif keys[hotkeys["Disable Input Viewer"]] then
 		if not key_switch then
 			update_configuration("Show Input Viewer", nil)

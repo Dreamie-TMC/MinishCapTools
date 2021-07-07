@@ -6,5 +6,6 @@
 	"Extended Background Chroma": "C",
 	"Use Custom Button Color": "V",
 	"Disable Textbox Features": "T",
-	"Disable Input Viewer": "I"
+	"Disable Input Viewer": "I",
+	"Reset Input Viewer Position": "K"
 }
