@@ -24,6 +24,7 @@ unlock = false
 key_hold = false
 is_textbox_open = false
 hotkey_editing = false
+waiting_for_hotkey = false
 
 -- Variables
 hits = 0

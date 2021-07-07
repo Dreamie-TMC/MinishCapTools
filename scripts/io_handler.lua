@@ -53,8 +53,43 @@ function per_frame_setup()
 	mouse = input.getmouse()
 end
 
+function determine_valid_key_press()
+	for key, value in pairs(keys) do
+		if key ~= "Enter" and key ~= "Right" and key ~= "Left" and key ~= nil then
+			update_hotkey(hotkey_keys[hotkey_index], key)
+			return true
+		end
+	end
+	return false
+end
+
+function hotkey_ui_input_loop()
+	if waiting_for_hotkey then
+		local added = determine_valid_key_press()
+		waiting_for_hotkey = not added
+	elseif keys["Enter"] then
+		if not key_switch then
+			waiting_for_hotkey = true
+			key_switch = true
+		end
+	elseif keys["Right"] then
+		if not key_switch then
+			next_hotkey(true)
+			key_switch = true
+		end
+	elseif keys["Left"] then
+		if not key_switch then
+			next_hotkey(false)
+			key_switch = true
+		end
+	end
+end
+
 function input_loop()
-	if keys[hotkeys["Load Hotkey Edit Tools"]] then
+	if hotkey_editing then
+		hotkey_ui_input_loop()
+		return
+	elseif keys[hotkeys["Load Hotkey Edit Tools"]] then
 		if not key_switch then
 			initialize_ui()
 			hotkey_editing = true

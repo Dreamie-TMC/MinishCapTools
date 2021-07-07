@@ -8,6 +8,20 @@ function initialize_ui()
 	hotkey_index = 1
 end
 
+function next_hotkey(forward)
+	if forward then
+		hotkey_index = hotkey_index + 1
+		if hotkey_index > #hotkey_keys then
+			hotkey_index = 1
+		end
+	else
+		hotkey_index = hotkey_index - 1
+		if hotkey_index == 0 then
+			hotkey_index = #hotkey_keys
+		end
+	end
+end
+
 function save()
 	save_hotkeys()
 	hotkey_editing = false
@@ -22,21 +36,29 @@ function key_line_wrapping()
 	
 	local current_line_length = 0
 	local output = ""
+	local linecount = 1
 	for k, word in pairs(strings) do
 		current_line_length = current_line_length + string.len(word) + 1
 		if current_line_length > 22 then
 			current_line_length = string.len(word)
 			output = output .. "\n"
+			linecount = linecount + 1
 		end
 		output = output .. word .. " "
 	end
 	
-	return output
+	return {word = output, count = linecount}
 end
 
 function draw_hotkey_ui()
 	local width = config["Padding Width"] + 240
+	local key_output = key_line_wrapping()
 	gui.drawRectangle(width + 20, 110, 60, 20, "green", "lightgreen")
 	gui.drawText(width + 22, 115, "Save Hotkeys", "black", nil, 8, "MiniSet2")
-	gui.drawText(width + 5, 30, key_line_wrapping(), "white", nil, 8, "MiniSet2")
+	gui.drawText(width + 5, 30, key_output["word"], "white", nil, 8, "MiniSet2")
+	if waiting_for_hotkey then
+		gui.drawText(width + 35, 30 + (12 * key_output["count"]) + 15, "Waiting...", "white", nil, 8, "MiniSet2")
+	else
+		gui.drawText(width + 35, 30 + (12 * key_output["count"]) + 15, "Key: " .. hotkeys[hotkey_keys[hotkey_index]], "white", nil, 8, "MiniSet2")	
+	end
 end
