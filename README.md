@@ -6,6 +6,7 @@ A series of tools for Minish Cap Speedruns and Practice
 - Created the input viewer
 
 #### Dreamie
+- Everything else
 
 ## Contributors
 #### Myth
@@ -42,13 +43,14 @@ A series of tools for Minish Cap Speedruns and Practice
 - R resets the counters for the trainer
 
 #### Shared
+- E loads the hotkey edit menu, allowing you to edit hotkeys from within the UI. Rebinding this is highly recommended.
 - M loads movie mode allowing inputs to be displayed for recordings and shows how well the movie mashes textboxes
 - C changes the background of the extension from black to blue or vice-versa
 
 ## Future Plans
 #### Loading/Editing Keybinds from a configuration file (Done)
 #### Disabling certain features from running through keybinds to improve performance (Done)
-#### Editing Keybinds directly in the UI (Starting)
+#### Editing Keybinds directly in the UI (Done)
 #### Total Lost Frames doing actions (pulling, shrinking) (Not Started)
 #### Frames between rolls counter, also counting the number of frame perfect rolls (Not Started)
 #### Useful Practice Tools such as Boss HP (Not Started)
@@ -73,6 +75,7 @@ A series of tools for Minish Cap Speedruns and Practice
 - Textbox trainer now accounts for textboxes where you need to select an option
 - The position of the input display now saves automatically when edited
 - The position of the input display can be reset to its default position
+- Hotkeys are now editable from the main UI
 
 #### Bug Fixes
 - Fixed an issue where the input display would be extremely desynced from the mouse due to the extra window padding
