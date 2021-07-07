@@ -91,10 +91,17 @@ function input_loop()
 	if hotkey_editing then
 		hotkey_ui_input_loop()
 		return
-	elseif keys[hotkeys["Load Hotkey Edit Tools"]] then
+	elseif not config["Speedrun Mode"] and keys[hotkeys["Load Hotkey Edit Tools"]] then
 		if not key_switch then
 			initialize_ui()
 			hotkey_editing = true
+			unlock = false
+			key_switch = true
+		end
+		return
+	elseif keys[hotkeys["Speedrun Mode"]] then
+		if not key_switch then
+			update_configuration("Speedrun Mode", nil)
 			key_switch = true
 		end
 		return

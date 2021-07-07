@@ -153,7 +153,7 @@ while true do
 		text_mashing_actions()
 	end
 	
-	if hotkey_editing and not waiting_for_hotkey then
+	if not config["Speedrun Mode"] and hotkey_editing and not waiting_for_hotkey then
 		check_for_save_clicked()
 	end
 	

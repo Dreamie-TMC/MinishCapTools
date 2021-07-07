@@ -18,6 +18,7 @@ A series of tools for Minish Cap Speedruns and Practice
 #### Testers
 - NyanCato
 - Aridner
+- I'm looking for 1 or 2 more guinea pigs. If anyone wants their name here as a tester please reach out to me from the Minish Cap Discord!
 
 ## Current Tools
 #### Input Viewer
@@ -29,6 +30,10 @@ A series of tools for Minish Cap Speedruns and Practice
 - Shows what percentage of text boxes you closed frame perfectly or not
 - Shows the total amount of frames lost to perfect textboxes
 - Shows the average amount of frames lost per textbox
+
+#### Hotkey Editor
+- Allows editing hotkeys for the above tools within the UI
+- Allows quick saving of the hotkeys by clicking the save button
 
 ## How To Use
 #### Input Viewer
@@ -42,8 +47,14 @@ A series of tools for Minish Cap Speedruns and Practice
 - T hides the output from the trainer
 - R resets the counters for the trainer
 
+#### Hotkey Editor
+- E loads the hotkey edit menu, allowing you to edit hotkeys from within the UI. Rebinding this is highly recommended. This disables all hotkeys not related to the editor in order to avoid any conflicts.
+- Pressing enter with the menu open will prompt for a key press. The next key press will be registered as the assigned hotkey for that action.
+- Pressing the right arrow will go to the next hotkey in the list, pressing the left arrow will go back one hotkey.
+- Clicking save will save the hotkeys and close the editing UI. This will also re-enable other hotkeys.
+
 #### Shared
-- E loads the hotkey edit menu, allowing you to edit hotkeys from within the UI. Rebinding this is highly recommended.
+- O puts the script into "Speedrun Mode" which locks you out of certain hotkeys. Currently is filters out opening the hotkey edit menu.
 - M loads movie mode allowing inputs to be displayed for recordings and shows how well the movie mashes textboxes
 - C changes the background of the extension from black to blue or vice-versa
 
@@ -76,6 +87,7 @@ A series of tools for Minish Cap Speedruns and Practice
 - The position of the input display now saves automatically when edited
 - The position of the input display can be reset to its default position
 - Hotkeys are now editable from the main UI
+- Added "Speedrun Mode" which is used to disable certain features. Currently the only feature disabled by this mode is hotkey editing but more will come in the future
 
 #### Bug Fixes
 - Fixed an issue where the input display would be extremely desynced from the mouse due to the extra window padding
