@@ -63,10 +63,16 @@ A series of tools for Minish Cap Speedruns and Practice
 - Auto Firerod (Not Started)
 
 ## Changelog
-#### Version 1.1
+### Version 1.1
+#### Features
 - Hotkeys are now stored in "config/Hotkeys.json" and are loaded at launch
 - Layout configuration is now saved so when you reload the script it starts off as you left it
 - Configuration data is found at "config/Config.json"
 - Input display and textbox trainers can be turned off
 - Added a counter for "Average Frames Lost Per Textbox"
 - Textbox trainer now accounts for textboxes where you need to select an option
+- The position of the input display now saves automatically when edited
+- The position of the input display can be set to it's default position
+
+#### Bug Fixes
+- Fixed an issue where the input display would be extremely desynced from the mouse due to the extra window padding
