@@ -11,7 +11,7 @@ function load_required_file_data()
 	config_file:close()
 	config = json.decode(config_data)
 	
-	-- Hotkey JSON Load
+	-- Hotkey Load
 	local hotkey_file = io.open("config/hotkeys.json", "r")
 	local data = hotkey_file:read("*a")
 	hotkey_file:close()
@@ -31,6 +31,17 @@ function update_configuration(key, value)
 	config_file:close()
 end
 
+function update_hotkey(key, value)
+	hotkeys[key] = value
+end
+
+function save_hotkeys()
+	local hotkey_file = io.open("config/hotkeys.json", "w")
+	local data = json.encode(hotkeys)
+	hotkey_file:write(data)
+	hotkey_file:close()
+end
+
 function per_frame_setup()
 	if config["Movie Mode"] and movie.isloaded() and emu.framecount() < movie.length() then
 		inputs = movie.getinput(emu.framecount()) 
@@ -43,6 +54,13 @@ function per_frame_setup()
 end
 
 function input_loop()
+	if keys[hotkeys["Load Hotkey Edit Tools"]] then
+		if not key_switch then
+			initialize_ui()
+			hotkey_editing = true
+			key_switch = true
+		end
+		return
 	if keys[hotkeys["Disable Textbox Features"]] then
 		if not key_switch then
 			update_configuration("Track Textboxes", nil)

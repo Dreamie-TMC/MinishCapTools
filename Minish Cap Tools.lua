@@ -3,6 +3,7 @@ require("scripts//memory_access")
 require("scripts//text_mash_helpers")
 require("scripts//controls_helpers")
 require("scripts//io_handler")
+require("scripts//hotkey_edit_ui")
 json = require "scripts//json"
 
 load_required_file_data()
@@ -22,6 +23,7 @@ mouse = {}
 unlock = false
 key_hold = false
 is_textbox_open = false
+hotkey_editing = false
 
 -- Variables
 hits = 0
