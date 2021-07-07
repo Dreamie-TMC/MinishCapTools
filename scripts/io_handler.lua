@@ -61,7 +61,7 @@ function input_loop()
 			key_switch = true
 		end
 		return
-	if keys[hotkeys["Disable Textbox Features"]] then
+	elseif keys[hotkeys["Disable Textbox Features"]] then
 		if not key_switch then
 			update_configuration("Track Textboxes", nil)
 			key_switch = true

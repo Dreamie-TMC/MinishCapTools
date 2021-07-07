@@ -131,6 +131,10 @@ function draw_text()
 		gui.drawText(5, 60, "Total Frames Lost:\n" .. calculate_frames_lost(), "red", nil, 8, "MiniSet2")
 		gui.drawText(5, 85, "Average Frames Lost:\n" .. calculate_average_frames_lost(), "red", nil, 8, "MiniSet2")
 	end
+	
+	if hotkey_editing then
+		draw_hotkey_ui()
+	end
 end
 
 -- Looping code here
