@@ -4,6 +4,7 @@ require("scripts//text_mash_helpers")
 require("scripts//controls_helpers")
 require("scripts//io_handler")
 require("scripts//hotkey_edit_ui")
+require("scripts//tas_tools")
 json = require "scripts//json"
 
 load_required_file_data()
@@ -37,11 +38,16 @@ frame_counter = 0
 frames_lost = 0
 
 -- Setup window
-client.SetGameExtraPadding(config["Padding Width"], 0, 0, 0)
 
 -- Generic Actions
-function generic_actions()	
-	if config["Background Chroma"] then
+function generic_actions()
+	if not config["Show Input Viewer"] and not config["Track Textboxes"] and not hotkey_editing then
+		client.SetGameExtraPadding(0, 0, 0, 0)
+	elseif not hotkey_editing then
+		client.SetGameExtraPadding(config["Padding Width"], 0, 0, 0)
+	end
+	
+	if config["Background Chroma"] and (config["Show Input Viewer"] or config["Track Textboxes"] or hotkey_editing) then
 		gui.drawBox(0, 0, config["Padding Width"] - 1, 160, 0xFF008CFF, 0xFF008CFF)
 	end
 end
@@ -147,23 +153,28 @@ event.onexit(on_close)
 
 -- Looping code here
 while true do
-	per_frame_setup()
-	input_loop()
+	per_frame_setup()	
 	
-	generic_actions()
-	
-	if config["Show Input Viewer"] then
-		controls_actions()
+	if config["TAS Mode"] and movie.mode() == "RECORD" then
+		client.SetGameExtraPadding(0, 0, 0, 0)
+		tas_tool_actions()
+	else 
+		input_loop()
+		generic_actions()
+		
+		if config["Show Input Viewer"] then
+			controls_actions()
+		end
+		if config["Track Textboxes"] then	
+			text_mashing_actions()
+		end
+		
+		if not config["Speedrun Mode"] and hotkey_editing and not waiting_for_hotkey then
+			check_for_save_clicked()
+		end
+		
+		draw_text()
 	end
 	
-	if config["Track Textboxes"] then	
-		text_mashing_actions()
-	end
-	
-	if not config["Speedrun Mode"] and hotkey_editing and not waiting_for_hotkey then
-		check_for_save_clicked()
-	end
-	
-	draw_text()
 	emu.frameadvance()
 end

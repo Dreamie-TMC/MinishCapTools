@@ -54,8 +54,13 @@ A series of tools for Minish Cap Speedruns and Practice
 - Clicking save will save the hotkeys and close the editing UI. This will also re-enable other hotkeys.
 - Clicking cancel will discard any changes made to the hotkeys and close the editing UI. It will reload the existing hotkeys and use those instead. This will also re-enable other hotkeys.
 
+#### TAS Mode
+- L allows use of the auto-action script. Supported actions so far are: automatic shrink when on a portal, automatic rolling, item grabbing (not throwing)
+- Auto-text masher is also included. No hotkey is needed to activate. It will hold any keys you are holding so it works with firerod.
+
 #### Shared
-- O puts the script into "Speedrun Mode" which locks you out of certain hotkeys. Currently it filters out opening the hotkey edit menu.
+- J puts the script into TAS Mode which allows access to the TAS tools. It also disables all other scripts.
+- O puts the script into "Speedrun Mode" which locks you out of certain hotkeys. Currently it filters out opening the hotkey edit menu and entering TAS Mode.
 - M loads movie mode allowing inputs to be displayed for recordings and shows how well the movie mashes textboxes
 - C changes the background of the extension from black to blue or vice-versa
 
@@ -88,7 +93,8 @@ A series of tools for Minish Cap Speedruns and Practice
 - The position of the input display now saves automatically when edited
 - The position of the input display can be reset to its default position
 - Hotkeys are now editable from the main UI
-- Added "Speedrun Mode" which is used to disable certain features. Currently the only feature disabled by this mode is hotkey editing but more will come in the future
+- Added "Speedrun Mode" which is used to disable certain features. Currently the only features disabled by this mode is hotkey editing and tas mode but more will come in the future
+- Added "TAS Mode" which allows access to the tas tools mentioned above. This is locked out in speedrun mode and additionally disables other scripts to discourage cheating.
 
 #### Bug Fixes
 - Fixed an issue where the input display would be extremely desynced from the mouse due to the extra window padding

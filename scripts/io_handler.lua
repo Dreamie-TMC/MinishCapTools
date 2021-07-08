@@ -47,9 +47,9 @@ end
 
 function per_frame_setup()
 	if config["Movie Mode"] and movie.isloaded() and emu.framecount() < movie.length() then
-		inputs = movie.getinput(emu.framecount()) 
+		inputs = movie.getinput(emu.framecount())
 	else 
-		inputs = joypad.get() 
+		inputs = joypad.get()
 	end
 	
 	keys = input.get()
@@ -108,6 +108,11 @@ function input_loop()
 			key_switch = true
 		end
 		return
+	elseif not config["Speedrun Mode"] and keys[hotkeys["TAS Mode"]] then
+		if not key_switch then
+			update_configuration("TAS Mode", nil)
+			key_switch = true
+		end
 	elseif keys[hotkeys["Disable Textbox Features"]] then
 		if not key_switch then
 			update_configuration("Track Textboxes", nil)
