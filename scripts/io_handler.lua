@@ -11,7 +11,10 @@ function load_required_file_data()
 	config_file:close()
 	config = json.decode(config_data)
 	
-	-- Hotkey JSON Load
+	load_hotkeys()
+end
+
+function load_hotkeys()
 	local hotkey_file = io.open("config/hotkeys.json", "r")
 	local data = hotkey_file:read("*a")
 	hotkey_file:close()
@@ -31,19 +34,86 @@ function update_configuration(key, value)
 	config_file:close()
 end
 
+function update_hotkey(key, value)
+	hotkeys[key] = value
+end
+
+function save_hotkeys()
+	local hotkey_file = io.open("config/hotkeys.json", "w")
+	local data = json.encode(hotkeys)
+	hotkey_file:write(data)
+	hotkey_file:close()
+end
+
 function per_frame_setup()
 	if config["Movie Mode"] and movie.isloaded() and emu.framecount() < movie.length() then
-		inputs = movie.getinput(emu.framecount()) 
+		inputs = movie.getinput(emu.framecount())
 	else 
-		inputs = joypad.get() 
+		inputs = joypad.get()
 	end
 	
 	keys = input.get()
 	mouse = input.getmouse()
 end
 
+function determine_valid_key_press()
+	for key, value in pairs(keys) do
+		if key ~= "Enter" and key ~= "Right" and key ~= "Left" and key ~= nil then
+			update_hotkey(hotkey_keys[hotkey_index], key)
+			return true
+		end
+	end
+	return false
+end
+
+function hotkey_ui_input_loop()
+	if waiting_for_hotkey then
+		local added = determine_valid_key_press()
+		waiting_for_hotkey = not added
+	elseif keys["Enter"] then
+		if not key_switch then
+			waiting_for_hotkey = true
+			key_switch = true
+		end
+	elseif keys["Right"] then
+		if not key_switch then
+			next_hotkey(true)
+			key_switch = true
+		end
+	elseif keys["Left"] then
+		if not key_switch then
+			next_hotkey(false)
+			key_switch = true
+		end
+	else
+		key_switch = false
+	end
+end
+
 function input_loop()
-	if keys[hotkeys["Disable Textbox Features"]] then
+	if hotkey_editing then
+		hotkey_ui_input_loop()
+		return
+	elseif not config["Speedrun Mode"] and keys[hotkeys["Load Hotkey Edit Tools"]] then
+		if not key_switch then
+			initialize_ui()
+			hotkey_editing = true
+			unlock = false
+			key_switch = true
+		end
+		return
+	elseif keys[hotkeys["Speedrun Mode"]] then
+		if not key_switch then
+			update_configuration("Speedrun Mode", nil)
+			key_switch = true
+		end
+		return
+	elseif not config["Speedrun Mode"] and keys[hotkeys["TAS Mode"]] then
+		if not key_switch then
+			update_configuration("TAS Mode", nil)
+			key_switch = true
+		end
+	elseif keys[hotkeys["Disable Textbox Features"]] then
 		if not key_switch then
 			update_configuration("Track Textboxes", nil)
 			key_switch = true

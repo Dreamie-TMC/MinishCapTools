@@ -7,3 +7,9 @@ function load_area_and_room()
 	local room = memory.read_s8(0x0BF5, "IWRAM")
 	return {Area = area, Room = room}
 end
+
+function load_link_states()
+	local state = memory.read_s8(0x116C, "IWRAM")
+	local secondary_state = memory.read_s8(0x3FB0, "IWRAM")
+	return {state = state, secondary_state = secondary_state}
+end
