@@ -70,7 +70,7 @@ A series of tools for Minish Cap Speedruns and Practice
 
 ## Other Scripts
 #### TAS tools
-- Auto Masher (Done)
+- Auto Masher (Done - Improvements WIP)
 - Auto Roll/Shrink/Grow/Pull (Done)
 - Auto Close Maps (Not Started)
 - Auto Swim (Not Started)

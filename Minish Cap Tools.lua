@@ -138,6 +138,13 @@ function draw_text()
 	end
 end
 
+function on_close()
+	client.SetGameExtraPadding(0, 0, 0, 0)
+	gui.clearGraphics()
+end
+
+event.onexit(on_close)
+
 -- Looping code here
 while true do
 	per_frame_setup()
