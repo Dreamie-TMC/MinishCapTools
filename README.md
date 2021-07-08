@@ -67,15 +67,17 @@ A series of tools for Minish Cap Speedruns and Practice
 ## Future Plans
 #### Loading/Editing Keybinds from a configuration file (Done)
 #### Disabling certain features from running through keybinds to improve performance (Done)
-#### Editing Keybinds directly in the UI (Done)
+#### Editing Keybinds directly in the UI (Moved Below)
+#### Add RNG Watch Menu (Starting)
+#### Make an edit menu to edit config, hotkeys, and watches directly from the UI (Hotkeys done, others not started)
 #### Total Lost Frames doing actions (pulling, shrinking) (Not Started)
-#### Frames between rolls counter, also counting the number of frame perfect rolls (Starting)
+#### Frames between rolls counter, also counting the number of frame perfect rolls (Not Started)
 #### Useful Practice Tools such as Boss HP (Not Started)
 #### Integration of Straylite's Pseudo Practice Rom LUA (Maybe?)
 
 ## Other Scripts
 #### TAS tools
-- Auto Masher (Done - Improvements WIP)
+- Auto Masher (Done)
 - Auto Roll/Shrink/Grow/Pull (Done)
 - Auto Close Maps (Not Started)
 - Auto Swim (Not Started)
